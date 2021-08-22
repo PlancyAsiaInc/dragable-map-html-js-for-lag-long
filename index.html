@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map form</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</head>
+<body >
+        <div class="col-md-12 p-3">
+        <div id="canvas" style="width: 100%; height: 85vh;"></div>
+        </div>
+        <div class="col-md-12">
+            <div class="container row p-3">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="latitude">Latitude</label>
+                        <!-- This is location for Myanmar -->
+                        <input id="latitude" name="latitude" type="text" value="21.9162" class="form-control" readonly required/>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label for="longitude">Longitude</label>
+                        <!-- This is location for Myanmar -->
+                        <input id="longitude" name="longitude" type="text" value="95.9560" class="form-control" readonly required/>
+                    </div>
+                </div>
+            </div>
+        </div>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>        
+<!-- Please Insert Your Map API here -->
+<script src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_MAP_API_KEY"></script>
+    <script type="text/javascript" src="gmap-drag.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var lat = ($("#latitude").val() == "") ? 11.558831 : $("#latitude").val(),
+                lng = ($("#longitude").val() == "") ? 104.917445 : $("#longitude").val(),
+                // (You can adjust map output setting)
+                zoom = 8,
+                coordslenght = 6;
+            mapDraggableMarker = new MapDraggableMarker({ element: $("#canvas")[0],
+                lat: lat,
+                lng: lng,
+                zoom: zoom,
+                coordsLenght: coordslenght,
+                elementLat: $("#latitude"),
+                elementLng: $("#longitude")
+            });
+            mapDraggableMarker.init();
+        });
+    </script>
+</body>
+</html>
