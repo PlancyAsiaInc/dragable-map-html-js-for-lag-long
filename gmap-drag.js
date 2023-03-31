@@ -20,7 +20,7 @@ MapDraggableMarker = function(options) {
 }
 
 MapDraggableMarker.prototype.addListenerToMarker = function() {
-    var self = this;
+    let self = this;
 
     google.maps.event.addListener(this.marker, 'dragend', function(evt) {
         self.elementLat.val(evt.latLng.lat().toFixed(self.coordsLenght));
